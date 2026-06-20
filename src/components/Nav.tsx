@@ -29,9 +29,6 @@ export default function Nav() {
               {link.label}
             </Link>
           ))}
-          <Link href="/login" className="text-black hover:opacity-70">
-            Login
-          </Link>
         </nav>
 
         <Link
