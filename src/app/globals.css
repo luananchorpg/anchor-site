@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #111111;
+  --color-lime: #c6f23c;
+  --color-lime-light: #f4fcdb;
+  --color-lime-dark: #1d2b04;
+  --color-lime-text: #3a4d0c;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-lime: var(--color-lime);
+  --color-lime-light: var(--color-lime-light);
+  --color-lime-dark: var(--color-lime-dark);
+  --color-lime-text: var(--color-lime-text);
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+html {
+  color-scheme: light;
+}
+
+.input {
+  width: 100%;
+  height: 38px;
+  padding: 0 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  font-size: 14px;
+  background: white;
+}
+
+.input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-lime);
+  border-color: var(--color-lime);
+}
+
+.btn-primary {
+  background: #111111;
+  color: var(--color-lime);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 11px 0;
+  border-radius: 8px;
+  transition: opacity 0.15s;
+}
+
+.btn-primary:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.btn-secondary {
+  background: none;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  color: #111111;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 11px 18px;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+
+.btn-secondary:hover {
+  background: rgba(0, 0, 0, 0.03);
+}
