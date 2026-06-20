@@ -7,6 +7,13 @@ export const metadata: Metadata = {
   title: "Anchor Property Group | We handle it. You don't have to.",
   description:
     "Full-service property management with simple percentage-based pricing. No contracts, no surprises.",
+  icons: {
+    icon: [
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const links = [
   { href: "/how-it-works", label: "How it works" },
@@ -12,11 +13,15 @@ export default function Nav() {
   return (
     <header className="border-b border-black/10">
       <div className="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2">
-          <span className="block w-[22px] h-[28px] border-2 border-black rounded-sm" />
-          <span className="font-medium text-sm tracking-wide text-black">
-            ANCHOR
-          </span>
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/logo-full.png"
+            alt="Anchor Property Group"
+            width={840}
+            height={385}
+            className="h-7 w-auto"
+            priority
+          />
         </Link>
 
         <nav className="hidden md:flex items-center gap-7 text-sm text-black/70">
