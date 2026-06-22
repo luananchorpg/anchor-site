@@ -21,27 +21,21 @@ export default function Home() {
             surprises.
           </p>
 
-          <form
-            action="/api/lead"
-            method="POST"
-            className="flex flex-col sm:flex-row gap-2.5 mb-3 max-w-md"
-          >
-            <input
-              type="text"
-              name="address"
-              placeholder="Enter your property address"
-              className="flex-1 h-11 px-3.5 rounded-md border border-black/15 text-sm focus:outline-none focus:ring-2 focus:ring-lime"
-            />
-            <button
-              type="submit"
-              className="h-11 px-5 bg-lime text-lime-dark text-sm font-medium rounded-md hover:opacity-90 transition-opacity whitespace-nowrap"
+          <div className="flex items-center gap-5">
+            <Link
+              href="/get-started"
+              className="h-11 px-6 flex items-center justify-center bg-lime text-lime-dark text-sm font-medium rounded-md hover:opacity-90 transition-opacity whitespace-nowrap"
             >
-              See your rate
-            </button>
-          </form>
-          <p className="text-xs text-black/40">
-            Free, no commitment. Takes a minute.
-          </p>
+              Get started
+            </Link>
+            <Link
+              href="/how-it-works"
+              className="text-sm font-medium text-black hover:opacity-70 transition-opacity inline-flex items-center gap-1.5"
+            >
+              Learn more
+              <span aria-hidden="true">→</span>
+            </Link>
+          </div>
         </div>
       </section>
 
