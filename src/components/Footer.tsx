@@ -29,6 +29,9 @@ export default function Footer() {
           <Link href="/areas-we-serve" className="hover:text-black">
             Areas we serve
           </Link>
+          <Link href="/agents" className="hover:text-black">
+            Agents
+          </Link>
         </nav>
 
         <p className="text-xs text-black/40">
