@@ -45,14 +45,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-t border-black/10">
-        <div className="mx-auto max-w-6xl grid grid-cols-1 sm:grid-cols-3">
-          <Stat value="97%" label="Avg. occupancy" border />
-          <Stat value="2 days" label="Avg. payout speed" border />
-          <Stat value="24/7" label="Support coverage" />
-        </div>
-      </section>
-
       <section className="mx-auto max-w-6xl px-6 py-16 border-t border-black/10">
         <h2 className="text-2xl md:text-[28px] font-medium text-black mb-3 max-w-lg">
           A property manager that actually does the managing.
@@ -181,27 +173,6 @@ function InfoCard({
       >
         {linkLabel} →
       </Link>
-    </div>
-  );
-}
-
-function Stat({
-  value,
-  label,
-  border,
-}: {
-  value: string;
-  label: string;
-  border?: boolean;
-}) {
-  return (
-    <div
-      className={`px-6 py-5 ${
-        border ? "sm:border-r border-black/10" : ""
-      }`}
-    >
-      <p className="text-xl font-medium text-black">{value}</p>
-      <p className="text-xs text-black/50 mt-0.5">{label}</p>
     </div>
   );
 }
