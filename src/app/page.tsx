@@ -88,6 +88,35 @@ export default function Home() {
       </section>
 
       <section className="mx-auto max-w-6xl px-6 py-16 border-t border-black/10">
+        <div className="text-center max-w-xl mx-auto mb-10">
+          <h2 className="text-2xl md:text-[28px] font-medium text-black mb-3">
+            Built by owners, for owners.
+          </h2>
+          <p className="text-black/60">
+            A track record you can check, not a promise you have to take on
+            faith.
+          </p>
+        </div>
+
+        <div className="grid sm:grid-cols-3 gap-3.5">
+          <TraceStat value="2023" label="Year founded" />
+          <TraceStat value="126" label="Units managed" suffix="and counting" />
+          <TraceStat value="10" label="Cities served" suffix="and counting" />
+          <TraceStat value="303" label="Tenant placements" suffix="and counting" />
+          <TraceStat value="1,075+" label="On-demand showings" />
+          <TraceStat value="$45M+" label="Rent processed" />
+          <TraceStat value="1,372+" label="Repairs coordinated" />
+          <TraceStat value="4,541+" label="Applications processed" />
+          <TraceStat value="50+" label="Trusted vendors" />
+        </div>
+
+        <p className="text-xs text-black/40 text-center mt-6">
+          Figures as of June 2026. Updated periodically as our portfolio
+          grows.
+        </p>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-6 py-16 border-t border-black/10">
         <h2 className="text-2xl font-medium text-black mb-3">
           Pay for results, not promises.
         </h2>
@@ -102,6 +131,26 @@ export default function Home() {
           See pricing →
         </Link>
       </section>
+    </div>
+  );
+}
+
+function TraceStat({
+  value,
+  label,
+  suffix,
+}: {
+  value: string;
+  label: string;
+  suffix?: string;
+}) {
+  return (
+    <div className="border border-black/10 rounded-xl p-5">
+      <p className="text-2xl font-medium text-black">{value}</p>
+      <p className="text-sm text-black/55 mt-1">{label}</p>
+      {suffix && (
+        <p className="text-xs text-black/35 mt-0.5">{suffix}</p>
+      )}
     </div>
   );
 }
