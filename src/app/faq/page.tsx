@@ -17,7 +17,7 @@ const faqs = [
   },
   {
     q: "Is there a contract or lock-in period?",
-    a: "No. You can leave anytime with no termination fee.",
+    a: "Yes, there's a standard management agreement, but no lock-in period and no breakup fee. You can cancel anytime, and we'll help with the transition to a new manager or self-management.",
   },
   {
     q: "Will I have one point of contact, or a support queue?",

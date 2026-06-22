@@ -17,7 +17,7 @@ export default function Home() {
 
           <p className="text-base text-black/60 leading-relaxed mb-7">
             A real team that answers the phone, handles the details, and only
-            gets paid when your property does. No contracts, no jargon, no
+            gets paid when your property does. No fine print, no jargon, no
             surprises.
           </p>
 

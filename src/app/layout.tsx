@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 export const metadata: Metadata = {
   title: "Anchor Property Group | We handle it. You don't have to.",
   description:
-    "Full-service property management with simple percentage-based pricing. No contracts, no surprises.",
+    "Full-service property management with simple percentage-based pricing. No fine print, no surprises.",
   icons: {
     icon: [
       { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
