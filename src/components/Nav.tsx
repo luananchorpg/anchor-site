@@ -8,6 +8,7 @@ const topLevelLinks = [
   { href: "/how-it-works", label: "How it works" },
   { href: "/pricing", label: "Pricing" },
   { href: "/about", label: "About" },
+  { href: "/available-properties", label: "Available properties" },
 ];
 
 const resourceLinks = [
@@ -16,10 +17,76 @@ const resourceLinks = [
   { href: "/agents", label: "Agents" },
 ];
 
-// TODO: replace with your actual property management platform's portal
-// login URL once decided. This is intentionally a placeholder ("#") so it
-// doesn't link anywhere broken or misleading in the meantime.
-const PORTAL_LOGIN_URL = "#";
+// TODO: replace with your actual property management platform's owner
+// portal login URL once decided. Placeholder ("#") so it doesn't link
+// anywhere broken or misleading in the meantime.
+const OWNER_LOGIN_URL = "#";
+
+// TODO: same as above, but for the resident/tenant portal. These may end
+// up being different URLs even on the same platform, so they're kept
+// separate here on purpose.
+const RESIDENT_LOGIN_URL = "#";
+
+function DropdownNav({
+  label,
+  items,
+}: {
+  label: string;
+  items: { href: string; label: string }[];
+}) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  return (
+    <div className="relative" ref={ref}>
+      <button
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        className="flex items-center gap-1 hover:text-black transition-colors whitespace-nowrap"
+      >
+        {label}
+        <svg
+          width="12"
+          height="12"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className={`transition-transform ${open ? "rotate-180" : ""}`}
+        >
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </button>
+
+      {open && (
+        <div className="absolute top-full right-0 mt-2 bg-white border border-black/10 rounded-md shadow-lg py-1.5 min-w-[160px] z-50 text-left">
+          {items.map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              onClick={() => setOpen(false)}
+              className="block px-4 py-2 text-sm text-black/70 hover:text-black hover:bg-black/[0.03] whitespace-nowrap"
+            >
+              {item.label}
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function Nav() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -39,86 +106,91 @@ export default function Nav() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  const loginItems = [
+    { href: OWNER_LOGIN_URL, label: "Owner login" },
+    { href: RESIDENT_LOGIN_URL, label: "Resident login" },
+  ];
+
   return (
     <header className="border-b border-black/10 relative">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
-        <Link
-          href="/"
-          className="flex items-center shrink-0"
-          onClick={() => setMobileOpen(false)}
-        >
-          <Image
-            src="/logo-full.png"
-            alt="Anchor Property Group"
-            width={840}
-            height={385}
-            className="h-6 sm:h-7 w-auto"
-            priority
-          />
-        </Link>
+        <div className="flex items-center gap-8">
+          <Link
+            href="/"
+            className="flex items-center shrink-0"
+            onClick={() => setMobileOpen(false)}
+          >
+            <Image
+              src="/logo-full.png"
+              alt="Anchor Property Group"
+              width={840}
+              height={385}
+              className="h-6 sm:h-7 w-auto"
+              priority
+            />
+          </Link>
 
-        {/* Desktop nav links */}
-        <nav className="hidden md:flex items-center gap-7 text-sm text-black/70">
-          {topLevelLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="hover:text-black transition-colors whitespace-nowrap"
-            >
-              {link.label}
-            </Link>
-          ))}
-
-          {/* Resources dropdown */}
-          <div className="relative" ref={resourcesRef}>
-            <button
-              onClick={() => setResourcesOpen((v) => !v)}
-              aria-expanded={resourcesOpen}
-              className="flex items-center gap-1 hover:text-black transition-colors whitespace-nowrap"
-            >
-              Resources
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className={`transition-transform ${
-                  resourcesOpen ? "rotate-180" : ""
-                }`}
+          {/* Desktop left-side nav links */}
+          <nav className="hidden md:flex items-center gap-7 text-sm text-black/70">
+            {topLevelLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="hover:text-black transition-colors whitespace-nowrap"
               >
-                <polyline points="6 9 12 15 18 9" />
-              </svg>
-            </button>
+                {link.label}
+              </Link>
+            ))}
 
-            {resourcesOpen && (
-              <div className="absolute top-full left-0 mt-2 bg-white border border-black/10 rounded-md shadow-lg py-1.5 min-w-[160px] z-50">
-                {resourceLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    onClick={() => setResourcesOpen(false)}
-                    className="block px-4 py-2 text-sm text-black/70 hover:text-black hover:bg-black/[0.03] whitespace-nowrap"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </div>
-            )}
+            {/* Resources dropdown */}
+            <div className="relative" ref={resourcesRef}>
+              <button
+                onClick={() => setResourcesOpen((v) => !v)}
+                aria-expanded={resourcesOpen}
+                className="flex items-center gap-1 hover:text-black transition-colors whitespace-nowrap"
+              >
+                Resources
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className={`transition-transform ${
+                    resourcesOpen ? "rotate-180" : ""
+                  }`}
+                >
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </button>
+
+              {resourcesOpen && (
+                <div className="absolute top-full left-0 mt-2 bg-white border border-black/10 rounded-md shadow-lg py-1.5 min-w-[160px] z-50">
+                  {resourceLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={() => setResourcesOpen(false)}
+                      className="block px-4 py-2 text-sm text-black/70 hover:text-black hover:bg-black/[0.03] whitespace-nowrap"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+          </nav>
+        </div>
+
+        {/* Right side: Login dropdown + Get started */}
+        <div className="flex items-center gap-5">
+          <div className="hidden md:block text-sm text-black/70">
+            <DropdownNav label="Login" items={loginItems} />
           </div>
 
-          <a
-            href={PORTAL_LOGIN_URL}
-            className="hover:text-black transition-colors whitespace-nowrap"
-          >
-            Owner / Resident login
-          </a>
-        </nav>
-
-        <div className="flex items-center gap-3">
           <Link
             href="/get-started"
             className="bg-black text-lime text-sm font-medium px-4 py-2 rounded-md hover:opacity-90 transition-opacity shrink-0"
@@ -179,13 +251,16 @@ export default function Nav() {
                 {link.label}
               </Link>
             ))}
-            <a
-              href={PORTAL_LOGIN_URL}
-              onClick={() => setMobileOpen(false)}
-              className="py-3 text-base text-black"
-            >
-              Owner / Resident login
-            </a>
+            {loginItems.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                onClick={() => setMobileOpen(false)}
+                className="py-3 text-base text-black border-b border-black/5"
+              >
+                {item.label}
+              </a>
+            ))}
           </nav>
           <div className="px-4 pb-4">
             <Link
