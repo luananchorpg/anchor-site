@@ -54,6 +54,40 @@ export default function Home() {
       </section>
 
       <section className="mx-auto max-w-6xl px-6 py-16 border-t border-black/10">
+        <h2 className="text-2xl md:text-[28px] font-medium text-black mb-3 max-w-lg">
+          A property manager that actually does the managing.
+        </h2>
+        <p className="text-black/60 max-w-lg mb-10">
+          From your first call to your monthly statement, here&apos;s what
+          working with us actually looks like.
+        </p>
+
+        <div className="grid md:grid-cols-3 gap-4">
+          <InfoCard
+            label="Get started"
+            title="Tell us about your property"
+            body="We learn what you need before anything else happens."
+            href="/get-started"
+            linkLabel="Start here"
+          />
+          <InfoCard
+            label="Leasing"
+            title="We find the right tenant"
+            body="Listing, screening, and lease signing, handled start to finish."
+            href="/how-it-works"
+            linkLabel="See how it works"
+          />
+          <InfoCard
+            label="Ongoing"
+            title="We keep things running"
+            body="Rent, maintenance, renewals, and reporting, without you chasing updates."
+            href="/pricing"
+            linkLabel="See pricing"
+          />
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-6 py-16 border-t border-black/10">
         <h2 className="text-2xl font-medium text-black mb-3">
           Pay for results, not promises.
         </h2>
@@ -68,6 +102,36 @@ export default function Home() {
           See pricing →
         </Link>
       </section>
+    </div>
+  );
+}
+
+function InfoCard({
+  label,
+  title,
+  body,
+  href,
+  linkLabel,
+}: {
+  label: string;
+  title: string;
+  body: string;
+  href: string;
+  linkLabel: string;
+}) {
+  return (
+    <div className="border border-black/10 rounded-xl p-6">
+      <p className="text-xs font-medium text-lime-text bg-lime-light inline-block px-2.5 py-1 rounded-md mb-4 tracking-wide">
+        {label.toUpperCase()}
+      </p>
+      <p className="text-lg font-medium text-black mb-2">{title}</p>
+      <p className="text-sm text-black/60 leading-relaxed mb-4">{body}</p>
+      <Link
+        href={href}
+        className="text-sm font-medium text-black hover:opacity-70 transition-opacity"
+      >
+        {linkLabel} →
+      </Link>
     </div>
   );
 }
