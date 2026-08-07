@@ -1,4 +1,5 @@
 import Link from "next/link";
+import PhotoCarousel from "@/components/PhotoCarousel";
 
 export default function Home() {
   return (
@@ -37,6 +38,11 @@ export default function Home() {
             </Link>
           </div>
         </div>
+      </section>
+
+      {/* Photo carousel */}
+      <section className="mx-auto max-w-6xl px-6 pb-16">
+        <PhotoCarousel />
       </section>
 
       <section className="mx-auto max-w-6xl px-6 py-16 border-t border-black/10">
