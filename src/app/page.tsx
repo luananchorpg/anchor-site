@@ -24,7 +24,9 @@ const stats = [
 export default function Home() {
   return (
     <div>
-      <section className="mx-auto max-w-6xl px-6 pt-16 pb-16">
+      <section className="mx-auto max-w-6xl px-6 pt-10 pb-16">
+
+        {/* Desktop: two-column, copy left / collage right */}
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
             <span className="inline-flex items-center gap-2 bg-lime-light border border-lime text-lime-text text-xs font-semibold px-3 py-1.5 rounded-full mb-6 tracking-wide uppercase">
@@ -37,7 +39,7 @@ export default function Home() {
               A real team that answers the phone, handles the details, and only
               gets paid when your property does. No fine print, no jargon, no surprises.
             </p>
-            <div className="flex items-center gap-5">
+            <div className="flex items-center gap-5 mb-8">
               <Link href="/get-started" className="h-12 px-7 flex items-center justify-center bg-lime text-lime-dark text-sm font-bold rounded-md hover:opacity-90 transition-opacity whitespace-nowrap">
                 Get started
               </Link>
@@ -45,8 +47,29 @@ export default function Home() {
                 Learn more <span aria-hidden="true">→</span>
               </Link>
             </div>
+
+            {/* Mobile: tall staggered photo grid — after buttons, hidden on desktop */}
+            <div className="md:hidden grid grid-cols-2 gap-2.5" style={{ height: 420 }}>
+              <div className="flex flex-col gap-2.5">
+                <div className="relative rounded-2xl overflow-hidden flex-1">
+                  <Image src={photos[0].src} alt={photos[0].alt} fill className="object-cover" sizes="180px" priority />
+                </div>
+                <div className="relative rounded-2xl overflow-hidden h-36">
+                  <Image src={photos[1].src} alt={photos[1].alt} fill className="object-cover" sizes="180px" />
+                </div>
+              </div>
+              <div className="flex flex-col gap-2.5 pt-6">
+                <div className="relative rounded-2xl overflow-hidden h-36">
+                  <Image src={photos[2].src} alt={photos[2].alt} fill className="object-cover" sizes="180px" />
+                </div>
+                <div className="relative rounded-2xl overflow-hidden flex-1">
+                  <Image src={photos[3].src} alt={photos[3].alt} fill className="object-cover" sizes="180px" />
+                </div>
+              </div>
+            </div>
           </div>
 
+          {/* Desktop collage — hidden on mobile */}
           <div className="hidden md:grid grid-cols-2 gap-3 h-[480px]">
             <div className="flex flex-col gap-3">
               <div className="relative rounded-xl overflow-hidden flex-1">
