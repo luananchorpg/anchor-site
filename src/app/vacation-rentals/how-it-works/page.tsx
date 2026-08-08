@@ -9,6 +9,15 @@ const steps = [
   { n: 4, title: "We handle everything in between", body: "Guest communication, check-ins, cleaning after every stay, maintenance, and monthly owner statements — handled without you lifting a finger." },
 ];
 
+const included = [
+  { title: "Listings on Airbnb & VRBO", body: "Plus our own direct booking channel — more visibility means more bookings." },
+  { title: "Professional photography", body: "We coordinate the shoot. Great photos are the single biggest driver of booking rates." },
+  { title: "Dynamic pricing", body: "Rates adjust automatically based on demand, local events, and seasonality." },
+  { title: "Guest communication", body: "Every message, inquiry, and review — handled by our team 24/7." },
+  { title: "Cleaning after every stay", body: "Professional turnover cleaning coordinated between every checkout and check-in." },
+  { title: "Maintenance & inspections", body: "Regular property checks and vendor coordination to keep your home in top shape." },
+];
+
 export default function VacationHowItWorks() {
   return (
     <div className="mx-auto max-w-5xl px-6 py-16">
@@ -16,10 +25,10 @@ export default function VacationHowItWorks() {
         <span className="inline-block text-[11px] font-bold text-lime-text bg-lime-light px-3 py-1.5 rounded-full mb-4 tracking-widest uppercase">
           Vacation Rental Management
         </span>
-        <h1 className="text-4xl md:text-5xl font-bold leading-tight tracking-tight text-black mb-4">
-          Listed, booked, and managed —<br />we handle the whole thing.
+        <h1 className="text-2xl md:text-5xl font-bold leading-tight tracking-tight text-black mb-4">
+          Listed, booked, and managed. We handle the whole thing.
         </h1>
-        <p className="text-lg text-black/55">
+        <p className="text-base md:text-lg text-black/55">
           From your first conversation to your first guest checkout, here&apos;s exactly what working with us looks like.
         </p>
       </div>
@@ -39,14 +48,7 @@ export default function VacationHowItWorks() {
       <div className="border-t border-black/10 pt-16 mb-16">
         <h2 className="text-2xl font-bold text-black text-center mb-12">What&apos;s included in full-service</h2>
         <div className="grid md:grid-cols-3 gap-6">
-          {[
-            { title: "Listings on Airbnb & VRBO", body: "Plus our own direct booking channel — more visibility means more bookings." },
-            { title: "Professional photography", body: "We coordinate the shoot. Great photos are the single biggest driver of booking rates." },
-            { title: "Dynamic pricing", body: "Rates adjust automatically based on demand, local events, and seasonality." },
-            { title: "Guest communication", body: "Every message, inquiry, and review — handled by our team 24/7." },
-            { title: "Cleaning after every stay", body: "Professional turnover cleaning coordinated between every checkout and check-in." },
-            { title: "Maintenance & inspections", body: "Regular property checks and vendor coordination to keep your home in top shape." },
-          ].map((item) => (
+          {included.map((item) => (
             <div key={item.title} className="flex items-start gap-3">
               <span className="text-[#639922] font-bold text-lg mt-0.5">✓</span>
               <div>

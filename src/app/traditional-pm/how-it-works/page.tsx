@@ -22,10 +22,10 @@ export default function TraditionalHowItWorks() {
         <span className="inline-block text-[11px] font-bold text-lime-text bg-lime-light px-3 py-1.5 rounded-full mb-4 tracking-widest uppercase">
           Traditional Property Management
         </span>
-        <h1 className="text-4xl md:text-5xl font-bold leading-tight tracking-tight text-black mb-4">
-          From address to managed,<br />in four steps.
+        <h1 className="text-2xl md:text-5xl font-bold leading-tight tracking-tight text-black mb-4">
+          From address to managed, in four steps.
         </h1>
-        <p className="text-lg text-black/55">
+        <p className="text-base md:text-lg text-black/55">
           No applications to fill out twice, no sales calls you didn&apos;t ask for.
           Just tell us about your property and we&apos;ll take it from there.
         </p>
