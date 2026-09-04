@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import AccordionFAQ from "@/components/AccordionFAQ";
 
 export const metadata: Metadata = { title: "FAQ | Traditional Property Management | Anchor Property Group" };
 
@@ -14,19 +15,12 @@ const faqs = [
 export default function TraditionalFAQ() {
   return (
     <div className="mx-auto max-w-2xl px-6 py-16">
-      <span className="block text-center text-[11px] font-bold text-lime-text bg-lime-light inline-block px-3 py-1.5 rounded-full mb-4 tracking-widest uppercase mx-auto w-fit">
+      <span className="block text-center text-[11px] font-bold text-lime-text bg-lime-light px-3 py-1.5 rounded-full mb-4 tracking-widest uppercase w-fit mx-auto">
         Traditional Property Management
       </span>
-      <h1 className="text-4xl md:text-5xl font-bold text-black text-center mb-3">Questions, answered</h1>
-      <p className="text-lg text-black/55 text-center mb-14">Everything you need to know before getting started.</p>
-      <div>
-        {faqs.map((item) => (
-          <div key={item.q} className="border-b border-black/10 py-6">
-            <p className="text-base font-bold text-black mb-2">{item.q}</p>
-            <p className="text-sm text-black/55 leading-relaxed">{item.a}</p>
-          </div>
-        ))}
-      </div>
+      <h1 className="text-4xl md:text-5xl font-extrabold text-black text-center mb-3">Questions, answered</h1>
+      <p className="text-lg text-black/55 text-center mb-12">Everything you need to know before getting started.</p>
+      <AccordionFAQ items={faqs} />
     </div>
   );
 }
