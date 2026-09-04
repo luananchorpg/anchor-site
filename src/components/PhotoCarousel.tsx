@@ -2,108 +2,131 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import FadeUp from "@/components/FadeUp";
 
 const slides = [
-  { src: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1400&q=85&auto=format&fit=crop", alt: "Bright modern living room" },
-  { src: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1400&q=85&auto=format&fit=crop", alt: "Clean exterior of a residential home" },
-  { src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&q=85&auto=format&fit=crop", alt: "Modern kitchen in a rental home" },
-  { src: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1400&q=85&auto=format&fit=crop", alt: "Comfortable bedroom in a managed property" },
-  { src: "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=1400&q=85&auto=format&fit=crop", alt: "Inviting rental property interior" },
+  { src: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600&q=85&auto=format&fit=crop", alt: "Bright modern living room" },
+  { src: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1600&q=85&auto=format&fit=crop", alt: "Clean exterior of a residential home" },
+  { src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=85&auto=format&fit=crop", alt: "Modern kitchen in a rental home" },
+  { src: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1600&q=85&auto=format&fit=crop", alt: "Comfortable bedroom in a managed property" },
+  { src: "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=1600&q=85&auto=format&fit=crop", alt: "Inviting rental property interior" },
 ];
 
-export default function PhotoCarousel() {
+export default function HeroCarousel() {
   const [current, setCurrent] = useState(0);
   const [paused, setPaused] = useState(false);
-  const [sliding, setSliding] = useState(false);
 
-  const goTo = useCallback((index: number) => {
-    if (sliding) return;
-    setSliding(true);
-    setCurrent(index);
-    setTimeout(() => setSliding(false), 500);
-  }, [sliding]);
-
-  const next = useCallback(() => goTo((current + 1) % slides.length), [current, goTo]);
-  const prev = useCallback(() => goTo((current - 1 + slides.length) % slides.length), [current, goTo]);
+  const next = useCallback(() => setCurrent((c) => (c + 1) % slides.length), []);
 
   useEffect(() => {
     if (paused) return;
-    const id = setInterval(next, 4000);
+    const id = setInterval(next, 5000);
     return () => clearInterval(id);
   }, [paused, next]);
 
   return (
-    <div
-      className="relative w-full overflow-hidden rounded-2xl"
-      style={{ aspectRatio: "16/7" }}
+    <section
+      className="relative w-full overflow-hidden"
+      style={{ minHeight: "88vh" }}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      {/* Slides */}
+      {/* Background slides */}
       {slides.map((slide, i) => (
         <div
           key={slide.src}
-          className="absolute inset-0 transition-opacity duration-500 ease-in-out"
-          style={{ opacity: i === current ? 1 : 0, zIndex: i === current ? 1 : 0 }}
+          className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
+          style={{ opacity: i === current ? 1 : 0 }}
         >
           <Image
             src={slide.src}
             alt={slide.alt}
             fill
             className="object-cover"
-            sizes="(max-width: 1200px) 100vw, 1200px"
+            sizes="100vw"
             priority={i === 0}
           />
-          {/* Subtle gradient overlay for text/controls readability */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
         </div>
       ))}
 
-      {/* Prev button */}
-      <button
-        onClick={prev}
-        aria-label="Previous photo"
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/80 hover:bg-white backdrop-blur-sm flex items-center justify-center shadow-md transition-all hover:scale-105 cursor-pointer"
-      >
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-          <polyline points="15 18 9 12 15 6" />
-        </svg>
-      </button>
+      {/* Dark overlay — stronger at bottom for text readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/45 to-black/70 z-10" />
 
-      {/* Next button */}
-      <button
-        onClick={next}
-        aria-label="Next photo"
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/80 hover:bg-white backdrop-blur-sm flex items-center justify-center shadow-md transition-all hover:scale-105 cursor-pointer"
-      >
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-          <polyline points="9 18 15 12 9 6" />
-        </svg>
-      </button>
-
-      {/* Dot indicators */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2">
-        {slides.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => goTo(i)}
-            aria-label={`Go to photo ${i + 1}`}
-            className="cursor-pointer transition-all duration-300 rounded-full"
-            style={{
-              width: i === current ? 24 : 8,
-              height: 8,
-              background: i === current ? "#C6F23C" : "rgba(255,255,255,0.6)",
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Pause indicator */}
-      {paused && (
-        <div className="absolute top-4 right-4 z-10 bg-black/40 backdrop-blur-sm text-white text-[11px] font-semibold px-2.5 py-1 rounded-full">
-          Paused
+      {/* Content */}
+      <div className="relative z-20 mx-auto max-w-6xl px-6 flex flex-col justify-center h-full" style={{ minHeight: "88vh" }}>
+        <div className="max-w-2xl pt-20 pb-24">
+          <FadeUp>
+            <span className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/25 text-white text-xs font-bold px-3 py-1.5 rounded-full mb-6 tracking-widest uppercase">
+              Now leasing in the Bay Area
+            </span>
+          </FadeUp>
+          <FadeUp delay={80}>
+            <h1 className="text-5xl md:text-[64px] font-extrabold leading-[1.04] tracking-tight text-white mb-5 drop-shadow-sm">
+              Less to manage.<br />More to show for it.
+            </h1>
+          </FadeUp>
+          <FadeUp delay={160}>
+            <p className="text-lg text-white/75 leading-relaxed mb-8 max-w-lg">
+              A real team that answers the phone, handles the details, and only
+              gets paid when your property does. No fine print, no jargon, no surprises.
+            </p>
+          </FadeUp>
+          <FadeUp delay={240}>
+            <div className="flex items-center gap-5">
+              <Link
+                href="/get-started"
+                className="h-12 px-7 flex items-center justify-center bg-lime text-lime-dark text-sm font-bold rounded-md hover:opacity-90 transition-opacity whitespace-nowrap shadow-lg"
+              >
+                Get started
+              </Link>
+              <Link
+                href="/traditional-pm/how-it-works"
+                className="text-sm font-semibold text-white hover:text-lime transition-colors inline-flex items-center gap-1.5"
+              >
+                Learn more <span aria-hidden="true">→</span>
+              </Link>
+            </div>
+          </FadeUp>
         </div>
-      )}
-    </div>
+
+        {/* Dot indicators */}
+        <div className="absolute bottom-8 left-6 flex items-center gap-2">
+          {slides.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrent(i)}
+              aria-label={`Go to photo ${i + 1}`}
+              className="cursor-pointer transition-all duration-300 rounded-full"
+              style={{
+                width: i === current ? 28 : 8,
+                height: 8,
+                background: i === current ? "#C6F23C" : "rgba(255,255,255,0.45)",
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Prev / Next arrows */}
+        <button
+          onClick={() => setCurrent((c) => (c - 1 + slides.length) % slides.length)}
+          aria-label="Previous photo"
+          className="absolute right-16 bottom-6 z-20 w-9 h-9 rounded-full bg-white/20 hover:bg-white/35 backdrop-blur-sm flex items-center justify-center transition-all cursor-pointer"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round">
+            <polyline points="15 18 9 12 15 6" />
+          </svg>
+        </button>
+        <button
+          onClick={next}
+          aria-label="Next photo"
+          className="absolute right-5 bottom-6 z-20 w-9 h-9 rounded-full bg-white/20 hover:bg-white/35 backdrop-blur-sm flex items-center justify-center transition-all cursor-pointer"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round">
+            <polyline points="9 18 15 12 9 6" />
+          </svg>
+        </button>
+      </div>
+    </section>
   );
 }
