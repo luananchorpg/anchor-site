@@ -3,7 +3,6 @@
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import FadeUp from "@/components/FadeUp";
 
 const slides = [
   { src: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1600&q=85&auto=format&fit=crop", alt: "Bright modern living room" },
@@ -56,38 +55,30 @@ export default function HeroCarousel() {
       {/* Content */}
       <div className="relative z-20 mx-auto max-w-6xl px-6 flex flex-col justify-center h-full" style={{ minHeight: "88vh" }}>
         <div className="max-w-2xl pt-20 pb-24">
-          <FadeUp>
-            <span className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/25 text-white text-xs font-bold px-3 py-1.5 rounded-full mb-6 tracking-widest uppercase">
-              Now leasing in the Bay Area
-            </span>
-          </FadeUp>
-          <FadeUp delay={80}>
-            <h1 className="text-5xl md:text-[64px] font-extrabold leading-[1.04] tracking-tight text-white mb-5 drop-shadow-sm">
-              Less to manage.<br />More to show for it.
-            </h1>
-          </FadeUp>
-          <FadeUp delay={160}>
-            <p className="text-lg text-white/75 leading-relaxed mb-8 max-w-lg">
-              A real team that answers the phone, handles the details, and only
-              gets paid when your property does. No fine print, no jargon, no surprises.
-            </p>
-          </FadeUp>
-          <FadeUp delay={240}>
-            <div className="flex items-center gap-5">
-              <Link
-                href="/get-started"
-                className="h-12 px-7 flex items-center justify-center bg-lime text-lime-dark text-sm font-bold rounded-md hover:opacity-90 transition-opacity whitespace-nowrap shadow-lg"
-              >
-                Get started
-              </Link>
-              <Link
-                href="/traditional-pm/how-it-works"
-                className="text-sm font-semibold text-white hover:text-lime transition-colors inline-flex items-center gap-1.5"
-              >
-                Learn more <span aria-hidden="true">→</span>
-              </Link>
-            </div>
-          </FadeUp>
+          <span className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/25 text-white text-xs font-bold px-3 py-1.5 rounded-full mb-6 tracking-widest uppercase">
+            Now leasing in the Bay Area
+          </span>
+          <h1 className="text-5xl md:text-[64px] font-extrabold leading-[1.04] tracking-tight text-white mb-5 drop-shadow-sm">
+            Less to manage.<br />More to show for it.
+          </h1>
+          <p className="text-lg text-white/75 leading-relaxed mb-8 max-w-lg">
+            A real team that answers the phone, handles the details, and only
+            gets paid when your property does. No fine print, no jargon, no surprises.
+          </p>
+          <div className="flex items-center gap-5">
+            <Link
+              href="/get-started"
+              className="h-12 px-7 flex items-center justify-center bg-lime text-lime-dark text-sm font-bold rounded-md hover:opacity-90 transition-opacity whitespace-nowrap shadow-lg"
+            >
+              Get started
+            </Link>
+            <Link
+              href="/traditional-pm/how-it-works"
+              className="text-sm font-semibold text-white hover:text-lime transition-colors inline-flex items-center gap-1.5"
+            >
+              Learn more <span aria-hidden="true">→</span>
+            </Link>
+          </div>
         </div>
 
         {/* Dot indicators */}
