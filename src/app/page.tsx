@@ -1,6 +1,7 @@
 import Link from "next/link";
 import FadeUp from "@/components/FadeUp";
 import HeroCarousel from "@/components/PhotoCarousel";
+import CountUp from "@/components/CountUp";
 
 const stats = [
   { value: "2023", label: "Year founded" },
@@ -22,7 +23,6 @@ const services = [
 export default function Home() {
   return (
     <div>
-      {/* Full-bleed hero carousel */}
       <HeroCarousel />
 
       {/* Two services */}
@@ -75,7 +75,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Stats */}
+      {/* Stats with CountUp */}
       <section className="mx-auto max-w-6xl px-6 py-16">
         <FadeUp>
           <div className="text-center max-w-xl mx-auto mb-12">
@@ -87,7 +87,9 @@ export default function Home() {
           {stats.map((s, i) => (
             <FadeUp key={s.label} delay={i * 50}>
               <div className="card-hover border border-black/10 rounded-2xl p-6">
-                <p className="text-4xl font-extrabold text-black tracking-tight">{s.value}</p>
+                <p className="text-4xl font-extrabold text-black tracking-tight">
+                  <CountUp value={s.value} />
+                </p>
                 <p className="text-sm font-semibold text-black/60 mt-1.5">{s.label}</p>
                 {s.suffix && <p className="text-xs text-black/35 mt-0.5">{s.suffix}</p>}
               </div>
