@@ -40,6 +40,10 @@ export default function Footer() {
           </nav>
         </div>
       </div>
+      <div className="mx-auto max-w-6xl px-6 pb-8 flex gap-5">
+        <Link href="/privacy-policy" className="text-xs text-black/40 hover:text-black">Privacy Policy</Link>
+        <Link href="/sms-terms" className="text-xs text-black/40 hover:text-black">SMS Terms &amp; Conditions</Link>
+      </div>
     </footer>
   );
 }

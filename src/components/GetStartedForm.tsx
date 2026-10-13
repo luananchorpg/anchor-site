@@ -230,6 +230,18 @@ export default function GetStartedForm() {
             <p className="text-[11px] text-black/40 mt-2 leading-relaxed">
               No commitment. A team member will reach out within 24 hours.
             </p>
+            <p className="text-[11px] text-black/40 mt-1.5 leading-relaxed">
+              By providing your phone number, you agree to receive SMS messages from Anchor Property Group.
+              Message and data rates may apply. Reply STOP to opt out, HELP for help. See our{" "}
+              <a href="/privacy-policy" className="underline hover:no-underline" target="_blank" rel="noopener noreferrer">
+                Privacy Policy
+              </a>{" "}
+              and{" "}
+              <a href="/sms-terms" className="underline hover:no-underline" target="_blank" rel="noopener noreferrer">
+                SMS Terms
+              </a>
+              .
+            </p>
 
             {error && (
               <p className="text-[12px] text-red-600 mt-2">{error}</p>
