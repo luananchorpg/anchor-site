@@ -102,13 +102,13 @@ export default function PrivacyPolicyPage() {
           <h2 className="text-xl font-bold text-black mb-3">Contact Us</h2>
           <p className="text-black/70 leading-relaxed">
             If you have questions about this Privacy Policy, contact us at{" "}
-            <span className="bg-amber-100 text-amber-800 px-1.5 py-0.5 rounded font-medium">
-              [ADD SUPPORT EMAIL]
-            </span>{" "}
+            <a href="mailto:team@anchorpg.com" className="font-semibold text-black underline hover:no-underline">
+              team@anchorpg.com
+            </a>{" "}
             or{" "}
-            <span className="bg-amber-100 text-amber-800 px-1.5 py-0.5 rounded font-medium">
-              [ADD SUPPORT PHONE NUMBER]
-            </span>
+            <a href="tel:+14085492858" className="font-semibold text-black underline hover:no-underline">
+              408.549.2858
+            </a>
             .
           </p>
         </section>
