@@ -35,7 +35,7 @@ export default function Footer() {
             <Link href="/about" className="text-sm text-black/55 hover:text-black">About</Link>
             <Link href="/available-properties" className="text-sm text-black/55 hover:text-black">Available properties</Link>
             <Link href="/areas-we-serve" className="text-sm text-black/55 hover:text-black">Areas we serve</Link>
-            <Link href="/agents" className="text-sm text-black/55 hover:text-black">Agents</Link>
+            <Link href="/agents" className="text-sm text-black/55 hover:text-black">Agents</Link><Link href="/buy-sell" className="text-sm text-black/55 hover:text-black">Buy / Sell</Link>
             <Link href="/get-started" className="text-sm text-black/55 hover:text-black">Get started</Link>
           </nav>
         </div>

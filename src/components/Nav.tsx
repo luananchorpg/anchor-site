@@ -34,7 +34,7 @@ const secondaryLinks = [
 
 const resourceLinks = [
   { href: "/areas-we-serve", label: "Areas we serve" },
-  { href: "/agents", label: "Agents" },
+  { href: "/agents", label: "Agents" }, { href: "/buy-sell", label: "Buy / Sell" },
 ];
 
 const loginLinks = [
