@@ -13,6 +13,7 @@ type FormData = {
   name: string;
   email: string;
   phone: string;
+  smsConsent: boolean;
 };
 
 const initialData: FormData = {
@@ -26,6 +27,7 @@ const initialData: FormData = {
   name: "",
   email: "",
   phone: "",
+  smsConsent: false,
 };
 
 export default function GetStartedForm() {
@@ -34,7 +36,7 @@ export default function GetStartedForm() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  function update<K extends keyof FormData>(key: K, value: string) {
+  function update<K extends keyof FormData>(key: K, value: FormData[K]) {
     setData((d) => ({ ...d, [key]: value }));
   }
 
@@ -230,18 +232,27 @@ export default function GetStartedForm() {
             <p className="text-[11px] text-black/40 mt-2 leading-relaxed">
               No commitment. A team member will reach out within 24 hours.
             </p>
-            <p className="text-[11px] text-black/40 mt-1.5 leading-relaxed">
-              By providing your phone number, you agree to receive SMS messages from Anchor Property Group.
-              Message and data rates may apply. Reply STOP to opt out, HELP for help. See our{" "}
-              <a href="/privacy-policy" className="underline hover:no-underline" target="_blank" rel="noopener noreferrer">
-                Privacy Policy
-              </a>{" "}
-              and{" "}
-              <a href="/sms-terms" className="underline hover:no-underline" target="_blank" rel="noopener noreferrer">
-                SMS Terms
-              </a>
-              .
-            </p>
+            <label className="flex items-start gap-2.5 mt-4 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={data.smsConsent}
+                onChange={(e) => update("smsConsent", e.target.checked)}
+                className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer accent-black"
+              />
+              <span className="text-[11px] text-black/50 leading-relaxed">
+                I agree to receive automated follow-up and reminder SMS messages from Anchor Property Group
+                at the phone number provided. Consent is optional and is not a condition of service. Message
+                frequency varies. Message and data rates may apply. Reply STOP to end, HELP for help. See our{" "}
+                <a href="/sms-terms" className="underline hover:no-underline" target="_blank" rel="noopener noreferrer">
+                  Terms of Service
+                </a>{" "}
+                and{" "}
+                <a href="/privacy-policy" className="underline hover:no-underline" target="_blank" rel="noopener noreferrer">
+                  Privacy Policy
+                </a>
+                .
+              </span>
+            </label>
 
             {error && (
               <p className="text-[12px] text-red-600 mt-2">{error}</p>

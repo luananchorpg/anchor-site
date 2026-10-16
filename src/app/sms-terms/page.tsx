@@ -13,19 +13,30 @@ export default function SmsTermsPage() {
         <section>
           <h2 className="text-xl font-bold text-black mb-3">Program Description</h2>
           <p className="text-black/70 leading-relaxed">
-            Anchor Property Group offers SMS/text message communications to property owners who opt in, including
-            account-related notifications such as maintenance updates, showing coordination, and service
-            communications tied to your property management agreement.
+            Anchor Property Group sends SMS/text messages to people who opt in. Messages include automated follow-up
+            and reminder messages about your inquiry or our property management services, and, for property owners
+            who are clients, account-related notifications such as maintenance updates, showing coordination, and
+            service communications tied to your property management agreement.
           </p>
         </section>
 
         <section>
           <h2 className="text-xl font-bold text-black mb-3">How to Opt In</h2>
+          <p className="text-black/70 leading-relaxed mb-3">
+            <strong>On our website:</strong> on the Get Started form at simplyanchor.com/get-started, you can opt in by
+            checking the box next to the phone number field that states you agree to receive automated follow-up and
+            reminder SMS messages from Anchor Property Group. The box is unchecked by default, and you will not
+            receive SMS messages unless you check it.
+          </p>
+          <p className="text-black/70 leading-relaxed mb-3">
+            <strong>During enrollment:</strong> property owners may also opt in by providing their phone number during
+            account setup or service enrollment with Anchor Property Group. Consent is obtained verbally or through
+            written agreement as part of the property management service contract. By opting in, you agree to receive
+            recurring account-related notifications via SMS from Anchor Property Group.
+          </p>
           <p className="text-black/70 leading-relaxed">
-            Property owners opt in to receive SMS updates by providing their phone number during account setup or
-            service enrollment with Anchor Property Group. Consent is obtained verbally or through written agreement
-            as part of the property management service contract. By opting in, you agree to receive recurring
-            account-related notifications via SMS from Anchor Property Group.
+            Consent to receive SMS messages is optional and is not a condition of purchasing any goods or services
+            or of becoming a client. You can submit the Get Started form without checking the box.
           </p>
         </section>
 
