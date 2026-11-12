@@ -22,7 +22,7 @@ export default function TraditionalPricing() {
         <div className="border border-black/10 rounded-xl p-6">
           <p className="text-[11px] font-bold text-black/40 tracking-widest uppercase mb-3">First property</p>
           <div className="flex items-end gap-1 mb-1">
-            <span className="text-6xl font-bold text-black tracking-tight">5%</span>
+            <span className="text-6xl font-bold text-black tracking-tight">6%</span>
             <span className="text-base text-black/40 font-medium mb-2">/mo</span>
           </div>
           <p className="text-sm text-black/40 mb-6">of monthly rent</p>
@@ -42,7 +42,7 @@ export default function TraditionalPricing() {
           </span>
           <p className="text-[11px] font-bold text-black/40 tracking-widest uppercase mb-3">Every property after</p>
           <div className="flex items-end gap-1 mb-1">
-            <span className="text-6xl font-bold text-black tracking-tight">4%</span>
+            <span className="text-6xl font-bold text-black tracking-tight">5%</span>
             <span className="text-base text-black/40 font-medium mb-2">/mo</span>
           </div>
           <p className="text-sm text-black/40 mb-6">of monthly rent</p>

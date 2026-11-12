@@ -57,7 +57,7 @@ export default function VacationPricing() {
       <div className="bg-black/[0.03] rounded-xl p-6 text-center">
         <p className="text-sm font-bold text-black mb-1">Also offer long-term rental management?</p>
         <p className="text-sm text-black/55 mb-3">
-          Our traditional property management pricing is separate — 5% for your first property, 4% for each after.
+          Our traditional property management pricing is separate — 6% for your first property, 5% for each after.
         </p>
         <a href="/traditional-pm/pricing" className="text-sm font-bold text-black underline underline-offset-2 hover:opacity-70 transition-opacity">
           See traditional PM pricing →
